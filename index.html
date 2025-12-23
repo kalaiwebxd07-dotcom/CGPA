@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna University CGPA Calculator - Regulation 2021</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header>
+            <div class="header-content">
+                <h1>Anna University CGPA Calculator</h1>
+                <p class="subtitle">Regulation 2023 | CSE Department</p>
+                <!-- Student Details for Print -->
+                <div id="print-student-details"
+                    style="display: none; margin-top: 1rem; border-top: 1px solid var(--glass-border); padding-top: 1rem;">
+                    <p style="margin: 0.2rem 0;"><strong>Name:</strong> <span id="print-name"></span></p>
+                    <p style="margin: 0.2rem 0;"><strong>Roll No:</strong> <span id="print-roll"></span></p>
+                    <p style="margin: 0.2rem 0;"><strong>Date:</strong> <span id="print-date"></span></p>
+                </div>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="moon-icon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="sun-icon">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </header>
+
+        <main>
+            <section class="calculator-section">
+                <div class="semester-info">
+                    <h2>Semester Subjects</h2>
+                    <span class="badge">Core CSE</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="subject-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Credits</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-credits="4">
+                                <td>Discrete Mathematics</td>
+                                <td class="credit-cell">4</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="3">
+                                <td>Data Structures & Algorithms</td>
+                                <td class="credit-cell">3</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="3">
+                                <td>Database Management Systems</td>
+                                <td class="credit-cell">3</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="3">
+                                <td>Object-Oriented Programming</td>
+                                <td class="credit-cell">3</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="3">
+                                <td>Software Engineering</td>
+                                <td class="credit-cell">3</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="3">
+                                <td>Operating Systems</td>
+                                <td class="credit-cell">3</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="2">
+                                <td>DSA Laboratory</td>
+                                <td class="credit-cell">2</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="2">
+                                <td>DBMS Laboratory</td>
+                                <td class="credit-cell">2</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr data-credits="2">
+                                <td>OS Laboratory</td>
+                                <td class="credit-cell">2</td>
+                                <td>
+                                    <select class="grade-select" required>
+                                        <option value="" disabled selected>Select Grade</option>
+                                        <option value="10">O</option>
+                                        <option value="9">A+</option>
+                                        <option value="8">A</option>
+                                        <option value="7">B+</option>
+                                        <option value="6">B</option>
+                                        <option value="5">C</option>
+                                        <option value="0">U</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="cgpa-input-section">
+                    <button id="toggle-cgpa" class="text-btn">
+                        <span class="icon">+</span> Enable Previous Semesters (For CGPA)
+                    </button>
+                    <div id="cgpa-fields" class="hidden">
+                        <div class="input-group">
+                            <label for="prev-credits">Previous Total Credits</label>
+                            <input type="number" id="prev-credits" placeholder="e.g. 50" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="prev-cgpa">Previous CGPA</label>
+                            <input type="number" id="prev-cgpa" placeholder="e.g. 8.5" step="0.01" min="0" max="10">
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="actions">
+                    <button id="reset-btn" class="secondary-btn">Reset</button>
+                    <button id="calculate-btn" class="primary-btn">Calculate SGPA</button>
+                    <button id="download-btn" class="secondary-btn"
+                        style="border-color: var(--highlight-color); color: var(--highlight-color);">Download
+                        Result</button>
+                </div>
+            </section>
+
+            <section id="result-section" class="result-card hidden">
+                <div class="result-header">
+                    <h3>Result Breakdown</h3>
+                    <div class="grade-badge" id="grade-badge">Excellent</div>
+                </div>
+
+
+
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span class="label">Total Credits</span>
+                        <span class="value" id="res-credits">0</span>
+                    </div>
+                    <div class="result-item highlight">
+                        <span class="label">SGPA</span>
+                        <span class="value main-score" id="res-sgpa">0.00</span>
+                    </div>
+                    <div class="result-item" id="cgpa-result-item" style="display: none;">
+                        <span class="label">CGPA</span>
+                        <span class="value main-score" id="res-cgpa">0.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Percentage</span>
+                        <span class="value" id="res-percentage">0%</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <button id="save-btn" class="secondary-btn"
+                        style="border-color: var(--highlight-color); color: var(--highlight-color); font-size: 0.9rem; padding: 0.5rem 1rem;">
+                        <span class="icon">💾</span> Save to History
+                    </button>
+                </div>
+                <div class="tooltip-info">
+                    <p>Formula: (CGPA - 0.5) × 10 = Percentage</p>
+                </div>
+            </section>
+
+            <section id="history-section" class="hidden" style="margin-top: 2rem;">
+                <div class="semester-info">
+                    <h2>History</h2>
+                    <button id="clear-history-btn" class="text-btn" style="font-size: 0.85rem; color: #ef4444;">Clear
+                        All</button>
+                </div>
+                <div id="history-list" class="history-grid">
+                    <!-- History items will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Designed for Anna University CSE Regulation 2023</p>
+        </footer>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal hidden">
+        <div class="modal-content glass-container"
+            style="max-width: 400px; margin: 0; padding: 2rem; position: relative; background: var(--input-bg);">
+            <h2 style="margin-bottom: 1rem;">Enter Details</h2>
+            <div class="input-group">
+                <label>Student Name</label>
+                <input type="text" id="student-name" placeholder="e.g. Kalai">
+            </div>
+            <div class="input-group" style="margin-top: 1rem;">
+                <label>Roll Number</label>
+                <input type="text" id="student-roll" placeholder="e.g. 21CS001">
+            </div>
+            <div class="actions" style="margin-top: 1.5rem;">
+                <button id="cancel-download" class="secondary-btn"
+                    style="color: #ef4444; border-color: #ef4444;">Cancel</button>
+                <button id="confirm-download" class="primary-btn">Download PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

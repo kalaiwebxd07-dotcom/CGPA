@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CGPA Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: end;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px dashed var(--glass-border);
+        }
+
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--highlight-color);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .admin-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header class="nav-header">
+            <div>
+                <h1>Admin Panel</h1>
+                <p class="subtitle">Manage Subjects & Credits</p>
+            </div>
+            <a href="index.html" class="back-link">← Back to Calculator</a>
+        </header>
+
+        <main>
+            <section id="login-section">
+                <!-- Simple client-side gate (Not secure, just UI feature as requested) -->
+                <div class="input-group" style="max-width: 300px; margin: 0 auto;">
+                    <label>Enter Admin Name</label>
+                    <input type="text" id="admin-name" placeholder="Enter name" style="margin-bottom: 1rem;">
+
+                    <label>Enter Admin Passcode</label>
+                    <input type="password" id="admin-pass" placeholder="Enter passcode">
+
+                    <button id="login-btn" class="primary-btn" style="width: 100%; margin-top: 1rem;">Login</button>
+                    <p id="login-error" style="color: #ef4444; font-size: 0.8rem; margin-top: 0.5rem; display: none;">
+                        Invalid Name or Passcode</p>
+                </div>
+            </section>
+
+            <section id="admin-content" class="hidden">
+                <div class="admin-controls">
+                    <div class="input-group">
+                        <label>Subject Name</label>
+                        <input type="text" id="new-subject" placeholder="e.g. Cloud Computing">
+                    </div>
+                    <div class="input-group">
+                        <label>Credits</label>
+                        <input type="number" id="new-credits" placeholder="e.g. 3" min="1" max="10">
+                    </div>
+                    <button id="add-subject-btn" class="primary-btn">+ Add</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="admin-subject-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Credits</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="actions">
+                    <button id="reset-defaults-btn" class="secondary-btn"
+                        style="color: #ef4444; border-color: #ef4444;">Reset to Defaults</button>
+                    <!-- Auto-saved to localStorage, but could add explicit save feedback -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
