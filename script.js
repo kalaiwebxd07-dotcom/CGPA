@@ -32,15 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Object-Oriented Programming", credits: 3 },
         { name: "Software Engineering", credits: 3 },
         { name: "Operating Systems", credits: 3 },
-        { name: "DSA Laboratory", credits: 2 },
-        { name: "DBMS Laboratory", credits: 2 },
-        { name: "OS Laboratory", credits: 2 }
+        { name: "DSA Laboratory", credits: 1 },
+        { name: "DBMS Laboratory", credits: 1 },
+        { name: "OS Laboratory", credits: 1 }
     ];
 
-    // Data Migration: Check if old data exists (e.g., "Software Engineering (Theory)") and reset if so
+    // Data Migration: Check if old data exists and reset if so
     const storedForCheck = localStorage.getItem('subjects');
-    if (storedForCheck && storedForCheck.includes("Software Engineering (Theory)")) {
-        localStorage.removeItem('subjects');
+    if (storedForCheck) {
+        // Check for old "Theory" names or incorrect credits
+        if (storedForCheck.includes("Software Engineering (Theory)") ||
+            storedForCheck.includes('"name":"DSA Laboratory","credits":2') ||
+            storedForCheck.includes('"name":"DBMS Laboratory","credits":2') ||
+            storedForCheck.includes('"name":"OS Laboratory","credits":2')) {
+            localStorage.removeItem('subjects');
+        }
     }
 
     // --- State ---
