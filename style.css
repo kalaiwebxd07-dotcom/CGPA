@@ -793,4 +793,56 @@ footer {
     .tooltip-info {
         display: none;
     }
+
+    /* Force Table Layout on Mobile Print */
+    .table-responsive table {
+        display: table !important;
+        width: 100% !important;
+    }
+
+    .table-responsive thead {
+        display: table-header-group !important;
+    }
+
+    .table-responsive thead tr {
+        position: static !important;
+        display: table-row !important;
+    }
+
+    .table-responsive tbody {
+        display: table-row-group !important;
+    }
+
+    .table-responsive tr {
+        display: table-row !important;
+        margin-bottom: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .table-responsive th,
+    .table-responsive td {
+        display: table-cell !important;
+        text-align: left !important;
+    }
+
+    .table-responsive td:last-child {
+        text-align: left !important;
+    }
+
+    .table-responsive td.credit-cell {
+        text-align: center !important;
+    }
+
+    /* Hide Mobile Labels in Print */
+    .table-responsive td::before {
+        content: none !important;
+        display: none !important;
+    }
+
+    .table-responsive td:first-child {
+        border-bottom: 1px solid #ddd !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0.4rem !important;
+    }
 }
