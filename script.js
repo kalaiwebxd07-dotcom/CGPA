@@ -27,24 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Defaults ---
     const DEFAULT_SUBJECTS = [
         { name: "Discrete Mathematics", credits: 4 },
-        { name: "Data Structures & Algorithms", credits: 3 },
+        { name: "Data Structure and Algorithms", credits: 3 },
+        { name: "Object Oriented Programming with Java", credits: 3 },
+        { name: "Data Structure using Java Laboratory", credits: 1 },
         { name: "Database Management Systems", credits: 3 },
-        { name: "Object-Oriented Programming", credits: 3 },
+        { name: "Database Management Systems Laboratory", credits: 1 },
         { name: "Software Engineering", credits: 3 },
         { name: "Operating Systems", credits: 3 },
-        { name: "DSA Laboratory", credits: 1 },
-        { name: "DBMS Laboratory", credits: 1 },
-        { name: "OS Laboratory", credits: 1 }
+        { name: "Operating Systems Laboratory", credits: 1 }
     ];
 
     // Data Migration: Check if old data exists and reset if so
     const storedForCheck = localStorage.getItem('subjects');
     if (storedForCheck) {
-        // Check for old "Theory" names or incorrect credits
-        if (storedForCheck.includes("Software Engineering (Theory)") ||
-            storedForCheck.includes('"name":"DSA Laboratory","credits":2') ||
-            storedForCheck.includes('"name":"DBMS Laboratory","credits":2') ||
-            storedForCheck.includes('"name":"OS Laboratory","credits":2')) {
+        // Check for old subject names to trigger reset
+        if (storedForCheck.includes("DSA Laboratory") ||
+            storedForCheck.includes("Professional Elective") ||
+            storedForCheck.includes("Formal Language and Automata Theory")) {
             localStorage.removeItem('subjects');
         }
     }
